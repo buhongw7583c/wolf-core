@@ -13,11 +13,15 @@ export default [
         }),
         retry: () => 'try again',
         onFill: () => null
-      }
+      },
     ],
-    nextAbility: () => 'weather',
+    nextAbility: (convoState) => ({
+      abilityName: 'weather',
+      message: `nice ! lets look at the weather!`
+    }),
     onComplete: (convoState, data) => {
       const { name } = data
+      convoState.name = name
       return `Oh! Hello ${name!}`
     }
   },
